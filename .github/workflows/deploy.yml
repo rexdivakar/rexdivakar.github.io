@@ -1,4 +1,4 @@
-name: 'Deploy'
+name: 'Automatic build'
 on:
   push:
     branches:
@@ -9,7 +9,7 @@ on:
       - LICENSE
 
 jobs:
-  build-release:
+  continuous-delivery:
 
     runs-on: ubuntu-latest
 
@@ -25,11 +25,5 @@ jobs:
           ruby-version: 2.7
           bundler-cache: true
 
-      - name: Check baseurl
-        run: |
-          baseurl="$(grep '^baseurl:' _config.yml | sed "s/.*: *//;s/['\"]//g;s/#.*//")"
-          if [[ -n $baseurl ]]; then
-            echo "BASE_URL=$baseurl" >> $GITHUB_ENV
-          fi
       - name: Deploy
         run: bash tools/deploy.sh
