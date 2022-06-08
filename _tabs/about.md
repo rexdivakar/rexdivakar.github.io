@@ -7,9 +7,9 @@ order: 4
 <!-- > Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
 {: .prompt-tip } -->
 
-<!-- ![aboutme]({{"/assets/img/rexdivakar.png"| absolute_url}}){: .shadow }{: .left }{: width="200" height="100" } -->
+![aboutme]({{"/assets/img/un.png"| absolute_url}}){: .shadow }{: width="700" height="500" }
 
-![curious_cat]({{"/assets/img/ecat.png"| absolute_url}}){: width="200" height="100" }{: .right }{: .shadow }
+<!-- ![curious_cat]({{"/assets/img/ecat.png"| absolute_url}}){: width="200" height="100" }{: .right }{: .shadow }
 
 <span style="color:blue">_I love exploring new things!_</span>.
 
@@ -18,4 +18,4 @@ order: 4
 <br/>
 ## _I enjoy learning new skills and implementing them in real life!_
 
-Feel free to connect with me...
+Feel free to connect with me... -->
