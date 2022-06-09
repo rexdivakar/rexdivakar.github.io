@@ -1,5 +1,5 @@
 ---
-title: A beginner’s guide to Docker  --  how to create your first Docker application 🐳
+title: A beginner’s guide to Docker  —  How to create your first Docker application 🐳
 author: rexdivakar
 date: 2022-06-07 07:47:00
 categories: [containers, docker]
@@ -12,8 +12,9 @@ pin: false
 ---
 
 ![docker]({{"/assets/img/dock_fish.jpg"| absolute_url}}){: width="600" height="600" }{: .shadow }
+_Now let’s create your first application_
 
-Before starting to build the app, lets first install the pre requisites for building the docker container,
+#### Before starting to build the app, let's first install the pre-requisites that are required for building the docker containers,
 
 ## 1. Install Docker on your machine
 
