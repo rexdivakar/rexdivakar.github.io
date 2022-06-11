@@ -15,35 +15,37 @@ pin: false
 Manage images
 -------------
 
-### `docker build`
+## docker build
 
-```yml
+Create an `image` from a Dockerfile.
+
+```shell
 docker build [options] .
   -t "app/container_name"    # name
   --build-arg APP_HOME=$APP_HOME    # Set build-time variables
 ```
 
-Create an `image` from a Dockerfile.
+## docker run
 
-### `docker run`
+Deploys the container from `docker image`.
 
-```yml
+```shell
 docker run [options] IMAGE
   # see `docker create` for options
 ```
 
-#### Example
-
-```
-docker run -it debian:buster /bin/bash
-```
+### Example
 
 Run a command in an `image`.
+
+```shell
+docker run -it debian:buster /bin/bash
+```
 
 Manage containers
 -----------------
 
-### `docker create`
+## docker Create
 
 ```yml
 docker create [options] IMAGE
@@ -61,17 +63,19 @@ docker create [options] IMAGE
 
 #### Example
 
-```
+Create a `container` from an `image`.
+
+```shell
 $ docker create --name app_redis_1 \
   --expose 6379 \
   redis:3.0.2
 ```
 
-Create a `container` from an `image`.
+### docker Exec
 
-### `docker exec`
+Command to login to the container,
 
-```yml
+```shell
 docker exec [options] CONTAINER COMMAND
   -d, --detach        # run in background
   -i, --interactive   # stdin
@@ -80,16 +84,18 @@ docker exec [options] CONTAINER COMMAND
 
 #### Example
 
-```
+Run commands in a `container`.
+
+```shell
 docker exec app_web_1 tail logs/development.log
 docker exec -t -i app_web_1 rails c
 ```
 
-Run commands in a `container`.
+### docker start/stop
 
-### `docker start`
+Start/stop a `container`.
 
-```yml
+```shell
 docker start [options] CONTAINER
   -a, --attach        # attach stdout/err
   -i, --interactive   # attach stdin
@@ -97,73 +103,71 @@ docker start [options] CONTAINER
 docker stop [options] CONTAINER
 ```
 
-Start/stop a `container`.
+### docker ps
 
-### `docker ps`
+Manage `container`s using ps/kill.
 
-```
+```shell
 docker ps
 docker ps -a
 docker kill $ID
 ```
 
-Manage `container`s using ps/kill.
+### docker logs
 
-### `docker logs`
+See what's being logged in an `container`.
 
-```
+```shell
 docker logs $ID
 docker logs $ID 2>&1 | less
 docker logs -f $ID # Follow log output
 ```
 
-See what's being logged in an `container`.
-
 Images
 ------
 
-### `docker images`
+### docker images
 
-```sh
+Manages `image`s.
+
+```shell
 $ docker images
   REPOSITORY   TAG        ID
   ubuntu       12.10      b750fe78269d
   me/myapp     latest     7b2431a8d968
 ```
 
-```sh
+```shell
 docker images -a   # also show intermediate
 ```
 
-Manages `image`s.
-
-### `docker rmi`
-
-```yml
-docker rmi b750fe78269d
-```
+### docker rmi
 
 Deletes `image`s.
+
+```shell
+docker rmi b750fe78269d
+```
 
 ## Clean up
 
 ### Clean all
 
-```sh
-docker system prune
-```
-
 Cleans up dangling images, containers, volumes, and networks (ie, not associated with a container)
 
-```sh
-docker system prune -a
+```shell
+docker system prune
 ```
 
 Additionally remove any stopped containers and all unused images (not just dangling images)
 
+```shell
+docker system prune -a
+```
+
 ### Containers
 
-```sh
+```shell
 # Stop all running containers
 docker stop $(docker ps -a -q)
 
@@ -173,19 +177,84 @@ docker container prune
 
 ### Images
 
-```sh
+Delete all the images
+
+```shell
 docker image prune [-a]
 ```
 
-Delete all the images
-
 ### Volumes
 
-```sh
+Delete all the volumes
+
+```shell
 docker volume prune
 ```
 
-Delete all the volumes
+## Sevices
+
+To view list of all the services runnning in swarm
+
+```shell
+docker service ls 
+
+```
+
+To see all running services
+
+```shell
+docker stack services stack_name
+```
+
+to see all services logs
+
+```shell
+docker service logs stack_name service_name 
+```
+
+To scale services quickly across qualified node
+
+```shell
+docker service scale stack_name_service_name=replicas
+```
+
+### Clean up
+
+To clean or prune unused (dangling) images
+
+```shell
+docker image prune 
+```
+
+To remove all images which are not in use containers , add - a
+
+```shell
+docker image prune -a 
+```
+
+To prune your entire system
+
+```shell
+docker system prune 
+```
+
+To leave swarm
+
+```shell
+docker swarm leave  
+```
+
+To remove swarm ( deletes all volume data and database info)
+
+```shell
+docker stack rm stack_name  
+```
+
+To kill all running containers
+
+```shell
+docker kill $(docekr ps -q ) 
+```
 
 Also see
 --------
