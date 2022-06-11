@@ -85,9 +85,7 @@ WORKDIR /app
 # install the dependencies and packages in the requirements file
 RUN pip install -r /app/requirements.txt
 
-# configure the container to run in an executed manner
-# ENTRYPOINT [ "python" ]
-
+# run the python code
 CMD ["python", "main.py" ]
 ```
 
